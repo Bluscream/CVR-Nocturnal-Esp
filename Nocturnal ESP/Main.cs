@@ -16,7 +16,7 @@ namespace Nocturnal
     public class Main : MelonMod
     {
       
-        private static Harmony.HarmonyInstance _instance = new Harmony.HarmonyInstance(Guid.NewGuid().ToString());
+        private static Harmony.HarmonyInstance _instance = new(Guid.NewGuid().ToString());
         private static GameObject _espGameObject { get; set; }
         private static float s_yValue { get; set; }
         internal static Shader s_materialShader { get; set; }
@@ -36,7 +36,7 @@ namespace Nocturnal
 
             using (WebClient wc = new WebClient())
             {
-                AssetBundle myLoadedAssetBundle = AssetBundle.LoadFromMemory(wc.DownloadData("https://nocturnal-client.xyz/Resources/outline"));
+                AssetBundle myLoadedAssetBundle = AssetBundle.LoadFromMemory(Resources.outline);
                 GameObject ShaderGameObject = myLoadedAssetBundle.LoadAsset<GameObject>("shdaers");
                 myLoadedAssetBundle.Unload(false);
                 GameObject NewObject = GameObject.Instantiate(ShaderGameObject, GameObject.Find("/Cohtml").transform);
